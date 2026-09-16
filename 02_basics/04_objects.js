@@ -73,3 +73,10 @@ console.log(instructor)
 //     "coursename": "js course",
 //     "source": "youtube"
 // }
+
+// [
+//     {},
+//     {},
+//     {}
+// ]
+
