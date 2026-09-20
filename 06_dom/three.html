@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai or Code</title>
+</head>
+<body>
+    <script>
+        const div = document.createElement('div')
+        console.log(div)
+
+        div.className = "main"
+        div.id = Math.round(Math.random() * 10 + 1)
+        div.setAttribute("title", "generated title")
+        div.style.backgroundColor = "green"
+        div.style.padding = "12px"
+        div.innerText = "I am a fullstack dev"
+        const addText = document.createTextNode("my name is prince sharma I am aspiring developer")
+        div.appendChild(addText)
+        document.body.appendChild(div)
+        let col = ["red", "green", "orange"]
+        let randomColor = col[Math.floor(Math.random() * col.length)];
+        for(let i=0; i<col.length; i++){
+            div.style.backgroundColor = randomColor
+        }
+    </script>
+</body>
+</html>
