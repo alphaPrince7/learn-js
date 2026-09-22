@@ -170,3 +170,63 @@ function endGame() {
 }
 
 ```
+
+## project 5 solution code
+```javascript
+const insert = document.getElementById('insert');
+
+window.addEventListener('keydown', (e) => {
+  insert.innerHTML = `<div class='color'>
+  <table>
+  <tr>
+    <th>Key</th>
+    <th>Keycode</th>
+    <th>Code</th>
+  </tr>
+  <tr>
+    <td>${e.key === ' ' ? 'space' : e.key}</td>
+    <td>${e.keyCode}</td>
+    <td>${e.code}</td>
+  </tr>
+</table>
+  </div>`;
+});
+
+```
+
+## project 6 solution code
+```javascipt
+    // let arr = [
+    //   'red',
+    //   'green',
+    //   'blue',
+    //   'yellow',
+    //   'orange',
+    //   'purple',
+    //   'white',
+    //   'voilet',
+    // ];
+    const randomColor = () => {
+      const hex = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += hex[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    };
+    let intervalId = null;
+    document.querySelector('#start').addEventListener('click', () => {
+      if (!intervalId) {
+        intervalId = setInterval(() => {
+          // const randomIndex = Math.floor(Math.random() * arr.length);
+          // document.body.style.backgroundColor = arr[randomIndex];
+          document.body.style.backgroundColor = randomColor();
+        }, 1000);
+      }
+    });
+
+    document.querySelector('#stop').addEventListener('click', () => {
+      clearInterval(intervalId);
+      intervalId = null;
+    });
+    ```
