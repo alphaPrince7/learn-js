@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Profile Card</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 24px;
+      text-align: center;
+      width: 260px;
+    }
+
+    .card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #007bff;
+    }
+
+    .card h2 {
+      margin: 12px 0 4px;
+      font-size: 20px;
+      color: #333;
+    }
+
+    .card p {
+      color: #666;
+      margin: 4px 0;
+      font-size: 14px;
+    }
+
+    .followers-badge {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 14px;
+      background-color: #007bff;
+      color: #ffffff;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Container element where the card will be rendered -->
+  <div id="card-container">Loading profile...</div>
+
+  <script>
+    const requestUrl = 'https://api.github.com/users/alphaprince7';
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('GET', requestUrl);
+
+    xhr.onreadystatechange = function () {
+      // Check if request completed successfully
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        const data = JSON.parse(this.responseText);
+
+        // Target the container and inject the profile card markup
+        const container = document.querySelector('#card-container');
+        container.innerHTML = `
+          <div class="card">
+            <img src="${data.avatar_url}" alt="${data.login}'s avatar">
+            <h2>${data.name || data.login}</h2>
+            <p>@${data.login}</p>
+            <div class="followers-badge">
+              Followers: ${data.followers}
+            </div>
+          </div>
+        `;
+      }
+    };
+
+    xhr.send();
+  </script>
+</body>
+</html>
